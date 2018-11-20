@@ -1,0 +1,22 @@
+{% extends 'records/index.html' %}
+
+{% block action %}
+<div style="width:1200px;">
+                <div class="index_up_bs2_bg">
+				<div class="sn_input">
+				<P><span></span>选择您购买的设备型号，填写设备对应的SN码！SN在说明书的***位置；</P>
+				<label >
+				<select class="sninput" name="select"  onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/>
+				  <option>选择产品型号</option>
+			    </select>
+				</label>
+				<input class="sninput1" value="输入SN码" onFocus="if(value==defaultValue){value='';this.style.color='#134d89'}" onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/></div>
+
+				</div>
+				<div class="ts">您输入的SN码，未生成成升级包，请 <a href="#">下载检测工具</a> 或 <a href="{% url 'index_up_bs' %}">申请升级包</a> </div>
+          </div>
+		  <div class="biaoti"> <h1>bs升级包</h1></div>
+		  <div style="width:1200px;">
+                <input class="input_01" type="button" value="上一步" onClick="javascript:location='{% url 'index_up' %}'"/> <input class="input_02" type="button" value="下载升级包"  />
+            </div>
+{% endblock %}

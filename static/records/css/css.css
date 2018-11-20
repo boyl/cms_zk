@@ -1,0 +1,334 @@
+body {
+	background-image: url(../img/bg.jpg);
+	background-size:100%; 
+	font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",sans-serif
+}
+div,form,img,ul,ol,li,dl,dt,dd,p,tr,td,body,strong,span,pre,input{margin:0; padding:0; border:0; background-repeat:no-repeat;}
+
+
+h1,h2,h3,h4,h5,h6,p{ margin:0; padding:0; font-weight:normal;}
+a {
+	-webkit-transition: 0.2s linear 0s;
+	transition: 0.2s linear 0s;
+	color: #FFFFFF;
+}
+
+a:hover,a:focus {
+	text-decoration: none;
+}
+
+#parallax{position:relative;padding-top:20px;overflow:hidden;width:100%;height:850px;}
+#parallax .input_01 {
+	font-size: 18px;
+	padding-right: 60px;
+	padding-left: 60px;
+	border: 1px solid #7ac143;
+	position:absolute;
+	top:720px;
+	left:200px;
+	BACKGROUND-COLOR: transparent;
+	border-radius:50px;
+	color: #7ac143;
+	height: 90px;
+	cursor: pointer;
+	width: 280px;
+}
+
+#parallax .input_01:hover {
+	font-size: 18px;
+	border: 1px solid #7ac143;
+	color: #FFFFFF;
+	height: 90px;
+	background-color: #7ac143;
+}
+
+#parallax .input_02 {
+width: 280px;
+    background-color: #7ac143;
+	font-size: 18px;
+	padding-right: 60px;
+	padding-left: 60px;
+	border: 1px solid #7ac143;
+	position:absolute;
+	top:720px;
+	left:720px;
+	border-radius:50px;
+	color: #fff;
+	height: 90px;
+	cursor: pointer;
+}
+#parallax  h3 {
+	text-align: center;
+	color: #FFFFFF;
+}
+
+
+
+#parallax  h3 a{
+	font-size: 22px;
+	line-height: 32px;
+	font-weight: bold;
+	color: #7ac143;
+	padding-top: 30px;
+	padding-bottom: 30px;
+
+}
+.ts {
+	font-size: 14px;
+	line-height: 30px;
+	font-weight: normal;
+	color: #FFFFFF;
+	background-color: #FF6633;
+	text-align: center;
+	height: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-right: 10px;
+	margin-left: 8px;
+	position:absolute;
+	width: 890px;
+	top: 670px;
+	left:145px;
+	border-radius:5px;
+}
+
+#parallax  h3 a:hover {
+	font-size: 22px;
+	line-height: 32px;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	clear: both;
+}
+
+#parallax .index_up_cs_bg h2,#parallax .index_up_bs_bg h2 {
+	text-align: center;
+	position: absolute;
+	bottom: 60px;
+	left: 130px;
+}
+#parallax .index_up_cs_bg h1,#parallax .index_up_bs_bg h1{
+	clear: both;
+	font-size: 16px;
+	font-weight: normal;
+	color: #FFFFFF;
+	margin-right: 30px;
+	margin-left: 60px;
+	line-height: 30px;
+}
+
+
+#parallax .input_02:hover {
+	font-size: 18px;
+	border: 1px solid #7ac143;
+	color: #FFFFFF;
+	height: 90px;
+	background-color: #64A336;
+}
+
+#parallax h2 .input_up_cs {
+	background-color: #7ac143;
+	font-size: 22px;
+	padding-right: 60px;
+	padding-left: 60px;
+	border: 1px solid #7ac143;
+	top:420px;
+	border-radius:50px;
+	color: #fff;
+	height: 90px;
+	cursor: pointer;
+	width: 250px;
+}
+#parallax h2 .input_up_cs:hover {
+	border: 1px solid #7ac143;
+	color: #FFFFFF;
+	background-color: #64A336;
+}
+
+#parallax .index_up_cs_bg {
+	background-image: url(../img/cs_one_bg.png);
+
+	height: 390px;
+	width: 500px;
+	top:160px;
+	left:10px;
+	padding-top: 230px;
+	background-repeat: no-repeat;
+	background-position: center top;
+	position:absolute;
+}
+#parallax .index_up_bs_bg {
+	background-image: url(../img/bs_one_bg.png);
+
+	height: 390px;
+	width: 500px;
+position:absolute;
+	top:160px;
+	left:600px;
+	padding-top: 230px;
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+
+#parallax .index_up_cs2_bg {
+	background-image: url(../img/bs_two_bg2.png);
+	height: 390px;
+	width: 900px;
+position:absolute;
+	top:160px;
+	left:150px;
+	padding-top: 230px;
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+#parallax .index_up_bs1_bg {
+	background-image: url(../img/bs_two_bg1.png);
+	height: 390px;
+	width: 900px;
+position:absolute;
+	top:160px;
+	left:150px;
+	padding-top: 230px;
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+
+#parallax .index_up_bs2_bg {
+	background-image: url(../img/bs_two_bg.png);
+	height: 390px;
+	width: 900px;
+position:absolute;
+	top:160px;
+	left:150px;
+	padding-top: 230px;
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+
+#parallax .sn_input {
+	background-image: url(../img/sn.png);
+	height: 100px;
+	background-repeat: no-repeat;
+	background-position: 50px 10px;
+}
+#parallax .sn_input .sninput {
+	font-size: 16px;
+	line-height: 38px;
+	height: 38px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 200px;
+	BACKGROUND-COLOR: transparent;
+	margin-top: 2px;
+	margin-left: 140px;
+}
+#parallax .sn_input .sninput1 {
+	font-size: 16px;
+	line-height: 38px;
+	height: 38px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 350px;
+	BACKGROUND-COLOR: transparent;
+	margin-left: 100px;
+}
+
+
+
+#parallax .lx_input {
+	background-image: url(../img/lx.png);
+	height: 100px;
+	background-repeat: no-repeat;
+	background-position: 60px 30px;
+}
+#parallax .lx_input .sninput {
+	font-size: 16px;
+	line-height: 30px;
+	height: 38px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 200px;
+	BACKGROUND-COLOR: transparent;
+	margin-top: 2px;
+	margin-left: 140px;
+}
+#parallax .lx_input .sninput1 {
+	font-size: 16px;
+	line-height: 30px;
+	height: 38px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 200px;
+	BACKGROUND-COLOR: transparent;
+	margin-left: 100px;
+}
+#parallax .lx_input p,#parallax .sn_input p ,#parallax .snd_input p{
+	font-size: 12px;
+	color: #96e1eb;
+	margin-left: 70px;
+	margin-bottom: 10px;
+}
+#parallax .lx_input p span,#parallax .sn_input p span ,#parallax .snd_input p span {
+	font-size: 18px;
+	color: #7ac143;
+	vertical-align: sub;
+}
+#parallax .biaoti{
+	font-weight: normal;
+	color: #FFFFFF;
+	text-align: center;
+	top:315px;left:500px;
+	position:absolute;
+	width:1200px;
+}
+#parallax .biaoti1{
+	font-weight: normal;
+	color: #FFFFFF;
+	top:140px;
+	left:105px;
+	width:260px;
+	position:absolute;
+}
+
+#parallax .biaoti h1,#parallax .biaoti1 h1 {
+	text-align: center;
+	font-size: 24px;
+}
+
+
+
+
+
+.foot {
+	background-position: center center;
+	bottom: 0px;
+	font-size: 12px;
+	color: #FFFFFF;
+	overflow: auto;
+	z-index: auto;
+	text-align: center;
+}
+
+
+
+.message{width:690px;margin:5px 0px 0px 65px;line-height:55px;color:#96e1eb;overflow:hidden;border-radius:10px 10px 10px 10px; }
+.message .input{width:300px;height:55px;line-height:28px;border:none;background:#b5e0e9;padding-left:20px;color:#134d89;font-family:Microsoft YaHei;font-size: 16px;}
+.message .liulan{
+	width:220px;
+	height:55px;
+	border:1px solid #7ac143;
+	background:#7ac143;
+	color:#ffffff;
+	cursor:pointer;
+	border-radius: 0px 10px 10px 0px;
+	font-size: 16px;
+}
+.message .files{position:absolute;left:-1000px;top:52px;heigth:26px;cursor:pointer;filter: Alpha(opacity=0);-moz-opacity:0;opacity:0;font-size: 18px;} 

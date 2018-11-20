@@ -1,0 +1,31 @@
+{% extends 'records/index.html' %}
+
+{% block action %}
+<div style="width:1200px;">
+                <div class="index_up_cs2_bg">
+                  <div class="snd_input">
+				<div class="message">
+	<form method="post" action="" enctype="multipart/form-data">
+	<div style=" float:left ">先下载<a href="#"><strong>【批量升级模版】</strong></a> 填写需批量升级的设备，然后上传填写好的批量升级模版</div>
+		<input type="text" id="txt" name="txt" class="input" value="本地文件" disabled="disabled" />
+		<input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传批量升级模版" size="30" onClick="f.click()" class="liulan">
+		<input type="file" id="f" onChange="txt.value=this.value" name="f" style="height:26px;" class="files"  size="1" hidefocus>
+
+	</form>
+</div>
+                  </div>
+                  <div class="lx_input">
+				<br><P>下面为选填项</P>
+				<input class="sninput" value="请输入您的手机" onFocus="if(value==defaultValue){value='';this.style.color='#134d89'}" onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/>
+				<input class="sninput1" value="请输入您的姓名" onFocus="if(value==defaultValue){value='';this.style.color='#134d89'}" onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/></div>
+
+
+
+				</div>
+
+          </div>
+		  <div class="biaoti"> <h1>固件批量升级</h1></div>
+		  <div style="width:1200px;">
+                <input class="input_01" type="button" value="上一步" onClick="javascript:location='{% url 'index_up' %}'"/> <input class="input_02" type="button" value="下载升级包"  />
+          </div>
+{% endblock %}

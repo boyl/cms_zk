@@ -1,0 +1,71 @@
+{% extends 'records/index.html' %}
+
+{% block action %}
+<div style="width:1200px;">
+                <div class="index_up_bs1_bg">
+                  <div class="snd_input">
+				<div class="message">
+	<form method="post" enctype="multipart/form-data" id="form_post">
+	<div style=" float:left ">先下载<a href="{{ MEDIA_URL }}templateexcel/批量升级模板.xls"><strong>【批量升级模版】</strong></a> 填写需批量升级的设备，然后上传填写好的批量升级模版</div>
+		<input type="text" id="txt" name="txt" class="input" value="本地文件" disabled="disabled" />
+		<input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传批量升级模版" size="30" onClick="f.click()" class="liulan">
+		<input type="file" id="f" onChange="txt.value=this.value" name="f" style="height:26px;" class="files"  size="1" hidefocus>
+
+	</form>
+</div>
+                  </div>
+                  <div class="lx_input">
+				<br><P>下面为选填项</P>
+				<input class="sninput" id="phone" placeholder="请输入您的手机" onFocus="if(value==defaultValue){value='';this.style.color='#134d89'}" onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/>
+				<input class="sninput1" id="name" placeholder="请输入您的姓名" onFocus="if(value==defaultValue){value='';this.style.color='#134d89'}" onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/></div>
+
+
+
+				</div>
+            <div class="ts" id="-1" style="display: none;">请上传要批量升级的文件！</div>
+            <div class="ts" id="0" style="display: none;">请使用【批量升级模板】处下载的文件来填写内容！</div>
+            <div class="ts" id="1" style="display: none;">SN或产品型号不能为空, 且产品型号必须存在!</div>
+            <div class="ts" id="2" style="display: none;">申请成功，请耐心等待bs包的制作！</div>
+            <div class="ts" id="3" style="display: none;">请在已经下载的批量升级模板文件中填写需要升级的设备型号以及SN号码！</div>
+            <div class="ts" id="4" style="display: none;">该批量升级已经申请，点击 <a href="{% url 'index_up_bs1' %}"><strong>直接下载</strong></a>！</div>
+          </div>
+		  <div class="biaoti"> <h1>批量申请</h1></div>
+		  <div style="width:1200px;">
+                <input class="input_01" type="button" value="上一步" onClick="javascript:location='{% url 'index_up' %}'"/> <input class="input_02" type="button" value="提交申请"  id="submit" />
+            </div>
+{% endblock %}
+
+{% block script %}
+<script>
+$(function () {
+    $("#submit").click(function () {
+        var file_obj = $("#f")[0].files[0];
+        //console.info(file_obj);
+        //console.info(typeof file_obj);
+        var fd = new FormData();
+        fd.append('f', file_obj);
+        fd.append('phone', $("#phone").val());
+        fd.append('name', $("#name").val());
+        fd.append('package_type', 0);
+        $.ajax({
+            url: '{% url 'batch_apply' %}',
+            type: 'POST',
+            data: fd,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                reset_ts_to_hide();
+                if (data.status == -1){$("#-1").show()}
+                if (data.status == 0){$("#0").show()}
+                if (data.status == 1){$("#1").show()}
+                if (data.status == 2){$("#2").show()}
+                if (data.status == 3){$("#3").show()}
+                if (data.status == 4){$("#4").show()}
+            }
+        })
+
+    })
+})
+</script>
+{% endblock %}

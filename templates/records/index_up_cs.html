@@ -1,0 +1,74 @@
+{% extends 'records/index.html' %}
+
+{% block action %}
+    <div style="width:1200px;">
+                <div class="index_up_cs2_bg">
+
+				<div class="sn_input">
+				<P><span>*</span>请填写您购买的设备和SN码；</P>
+				<label >
+				<select class="sninput" name="select"  onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/>
+				  <option value="">选择产品型号</option>
+                    {% for obj in object_list %}
+                    <option value="{{ obj.pk }}">{{ obj.device_name }}</option>
+                    {% endfor %}
+			    </select>
+				</label>
+				<input class="sninput1" id="input_sn" placeholder="输入SN码" onFocus="if(value==defaultValue){value='';this.style.color='#134d89'}" onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/></div>
+
+				<div class="lx_input">
+				<br><P>下面为选填项</P>
+				<input class="sninput" id="input_phone_number" placeholder="请输入您的手机" onFocus="if(value==defaultValue){value='';this.style.color='#134d89'}" onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/>
+				<input class="sninput1" id="input_name" placeholder="请输入您的姓名" onFocus="if(value==defaultValue){value='';this.style.color='#134d89'}" onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/></div>
+				</div>
+            <div class="ts" id="0" style="display: none;">产品型号或SN码不能为空！</div>
+            <div class="ts" id="1" style="display: none;">bs包下载中...请注意下载进度！</div>
+          </div>
+		   <div class="biaoti"> <h1>固件升级包</h1></div>
+		  <div style="width:1200px;">
+                <input class="input_01" type="button" value="上一步" onClick="javascript:location='{% url 'index_up' %}'"/>
+                <input class="input_02" type="button" value="下载升级包" id="submit"/>
+            </div>
+{% endblock %}
+
+{% block script %}
+
+    <script>
+
+        $(function () {
+            function submitSingleApply(package_type) {  // package_type =>0, 1
+                var device_id = $('select option:selected').attr('value');
+                var device_sn = $('#input_sn').val();
+                var name = $('#input_name').val();
+                var phone = $('#input_phone_number').val();
+                $.ajax({
+                        type: "POST",
+                        url: '{% url 'single_download' %}',
+                        data: {
+                            'device_id': device_id,
+                            'device_sn': device_sn,
+                            'name': name,
+                            'phone': phone,
+                            'package_type': package_type
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            reset_ts_to_hide();
+                            if (data.msg == '0') {
+                                $("#0").show();
+                            }
+                            if (data.msg == '1') {
+                                $("#1").show();
+                                window.location.href = '{% url 'download_file' %}' + '?file_path=' + data.file_path
+                            }
+                        }
+                    }
+                )
+            }
+            $("#submit").click(function () {
+                submitSingleApply(1)
+            });
+
+        })
+    </script>
+{% endblock %}

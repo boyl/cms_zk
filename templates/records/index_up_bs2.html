@@ -1,0 +1,31 @@
+{% extends 'records/index.html' %}
+
+{% block action %}
+<div style="width:1200px;">
+                <div class="index_up_bs1_bg">
+				<div class="sn_input">
+				<P><span>*</span>单个设备升级</P>
+				<label >
+				<select class="sninput" name="select"  onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/>
+				  <option>选择产品型号</option>
+			    </select>
+				</label>
+				<input class="sninput1" value="输入SN码" onFocus="if(value==defaultValue){value='';this.style.color='#134d89'}" onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/></div>
+
+				<div class="lx_input">
+				<br><P>下面为选填项</P>
+				<input class="sninput" value="请输入您的手机" onFocus="if(value==defaultValue){value='';this.style.color='#134d89'}" onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/>
+				<input class="sninput1" value="请输入您的姓名" onFocus="if(value==defaultValue){value='';this.style.color='#134d89'}" onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/></div>
+
+
+
+				</div>
+<div class="ts">您输入的是SN码已提交过申请，点击 <a href="#"><strong>直接下载</strong></a>！</div>
+          </div>
+
+		 <div class="biaoti"> <h1>升级包申请</h1></div>
+
+		  <div style="width:1200px;">
+                <input class="input_01" type="button" value="上一步" onClick="javascript:location='{% url 'index_up' %}'"/> <input class="input_02" type="button" value="提交申请"  />
+            </div>
+{% endblock %}

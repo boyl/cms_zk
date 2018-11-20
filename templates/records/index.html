@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="UTF-8">
+<head>
+    {% block head_meta %}<meta charset="UTF-8">{% endblock %}
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>中控智慧自助升级平台</title>
+<link href="{% static 'records/css/css.css' %}" rel="stylesheet" type="text/css" />
+<!-- script -->
+<script src="{% static 'records/js/jquery-1.11.1.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'records/js/jquery.jparallax.js' %}" type="text/javascript" ></script>
+{% block custom_js %}
+<script src="{% static 'records/js/csrf_token.js' %}" type="text/javascript"></script>
+<script src="{% static 'records/js/utils.js' %}" type="text/javascript"></script>
+{% endblock %}
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$('#parallax').jparallax({
+		triggerExposesEdges:true,
+		yparallax:false
+	},{
+		yparallax:false
+	},{
+		yparallax:false
+	},{
+		yparallax:false
+	},{
+		yparallax:false
+	});
+
+});
+</script>
+
+</head>
+
+<body>
+
+    <div style="overflow:hidden;width:1200px;margin:0px auto;">
+    	<div id="parallax" class="clear">
+		<div style="width:1250px;">
+                <img style="position:absolute;top:120px;left:50px;" alt="" src="{% static 'records/img/globe.png' %}"/>
+		  </div>
+        	<div style="width:1180px;">
+                <img style="position:absolute;top:0px;left:210px;" alt="" src="{% static 'records/img/title.png' %}"/>
+            </div>
+				<div style="width:1320px;">
+                <img style="position:absolute;top:380px;left:280px;" alt="" src="{% static 'records/img/globe_shadow.png' %}"/>
+            </div>
+			{% block action %}
+             <div style="width:1200px;">
+                <input class="input_01" type="button" value="检测工具下载" /> <input class="input_02" type="button" value="已检测! 马上升级" onclick="javascript:location='{% url 'index_up' %}'"/>
+            </div>
+            {% endblock %}
+      </div>
+			<div class="foot">
+			<p><a href="http://www.zkteco.com" target="_blank">企业官网</a>    |    <a href="http://xm.zkteco.com" target="_blank">厦门软件基地</a></p>
+			<p>软件升级服务热线：0592-7791132     固件升级服务热线：4006900999</p>
+			<p>Copyright ◎2018中控智慧科技股份有限公司 版权所有 粤ICP备17131293号-1</p>
+			</div>
+</div>
+
+
+{% block script %}
+    <script>
+    </script>
+{% endblock %}
+
+
+</body>
+</html>
