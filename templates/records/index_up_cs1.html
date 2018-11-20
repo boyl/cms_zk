@@ -32,6 +32,10 @@
 {% block script%}
 <script>
     $(function () {
+        $.ajaxSetup({
+          data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+        });
+
         $("#download").click(function () {
             var device_id = $('select option:selected').attr('value');
             var device_sn = $('#input_sn').val();

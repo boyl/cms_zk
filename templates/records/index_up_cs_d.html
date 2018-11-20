@@ -39,6 +39,10 @@
 {% block script %}
 <script>
 $(function () {
+    $.ajaxSetup({
+          data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+        });
+
     $("#submit").click(function () {
         var file_obj = $("#f")[0].files[0];
         //console.info(file_obj);

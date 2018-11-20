@@ -44,7 +44,9 @@
 
 {% block script %}
     <script>
-
+        $.ajaxSetup({
+          data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+        });
         $(function () {
             function submitSingleApply(package_type) {  // package_type =>0, 1
                 var device_id = $('select option:selected').attr('value');
