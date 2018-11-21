@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 
-from .models import BSInfo, Device, InterfaceLogs
+from .models import BSInfo, Device, InterfaceLogs, CSInfo
 
 
 @admin.register(BSInfo)
@@ -14,6 +14,15 @@ class BSInfoAdmin(admin.ModelAdmin):
     search_fields = ('applicant', 'device_number')
     ordering = ('-application_date',)
     date_hierarchy = 'application_date'
+
+
+@admin.register(CSInfo)
+class CSInfoAdmin(admin.ModelAdmin):
+    list_display = ('applicant', 'contact', 'device_number',
+                    'is_sync_wx', 'is_sync_ff', 'device_type', 'deal_tag_wx', 'deal_tag_ff')
+    list_filter = ('device_type', 'device_number')
+    list_per_page = 50
+    search_fields = ('device_type', 'device_number')
 
 
 @admin.register(Device)
@@ -44,6 +53,7 @@ class MyAdminSite(AdminSite):
 admin_site = MyAdminSite('my_admin')
 admin_site.register(BSInfo, BSInfoAdmin)
 admin_site.register(Device, DeviceAdmin)
+admin_site.register(CSInfo, CSInfoAdmin)
 admin_site.register(InterfaceLogs, InterfaceLogsAdmin)
 admin.site.site_header = '固件升级包后台管理'
 admin.site.site_title = '固件升级包后台管理'

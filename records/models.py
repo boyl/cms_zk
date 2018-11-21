@@ -16,8 +16,8 @@ class CSInfo(models.Model):
     device_number = models.CharField('SN号码', max_length=30)
     is_sync_wx = models.IntegerField('是否同步企业微信', choices=SYNC_CHOICE, default=0)
     is_sync_ff = models.IntegerField('是否同步服服后台', choices=SYNC_CHOICE, default=0)
-    deal_tag_wx = models.IntegerField('处理标志', choices=((0, '未处理'), (1, '已处理')), default=0)
-    deal_tag_ff = models.IntegerField('处理标志', choices=((0, '未处理'), (1, '已处理')), default=0)
+    deal_tag_wx = models.IntegerField('企业处理标志', choices=((0, '未处理'), (1, '已处理')), default=0)
+    deal_tag_ff = models.IntegerField('服服处理标志', choices=((0, '未处理'), (1, '已处理')), default=0)
 
     device_type = models.ForeignKey('Device', verbose_name='设备型号')
 
