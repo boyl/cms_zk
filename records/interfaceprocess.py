@@ -155,7 +155,7 @@ def main_():  # 同步版
     sync_fufu()
 
 
-main_()
+# main_()
 register_events(scheduler)
 scheduler.start()
 print("Scheduler started!")
