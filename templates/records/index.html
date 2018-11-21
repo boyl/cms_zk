@@ -50,7 +50,8 @@ $(document).ready(function(){
             </div>
 			{% block action %}
              <div style="width:1200px;">
-                <input class="input_01" type="button" value="检测工具下载" /> <input class="input_02" type="button" value="已检测! 马上升级" onclick="javascript:location='{% url 'index_up' %}'"/>
+                <input class="input_01" type="button" value="检测工具下载" onclick="javascript:location='{{ MEDIA_URL }}tools/检测工具.zip'"/>
+                 <input class="input_02" type="button" value="已检测! 马上升级" onclick="javascript:location='{% url 'index_up' %}'"/>
             </div>
             {% endblock %}
       </div>

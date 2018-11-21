@@ -86,7 +86,7 @@ def batch_apply(request):
     data, _ = handle_file(file)
     if isinstance(data, dict):  # 错误信息字典
         return JsonResponse(data)
-    str_data = str(dict(data))
+    str_data = str(data)
     device_number = data[0][1]
     device_type = Device.objects.get(device_name=data[0][0])
     if BSInfo.objects.filter(device_number=device_number):
@@ -129,12 +129,15 @@ def handle_file(file):
         return {"status": 0}, ''
     if not list_data:
         return {"status": 0}, ''
-    head_data = list_data[0]
-    body_data = list_data[1:]
+    try:
+        head_data = list_data[2]
+    except IndexError:
+        return {"status": 0}, ''
+    body_data = list_data[3:]
     if not body_data:
         return {"status": 3}, ''
     try:
-        if head_data[0] != '产品型号' or head_data[1] != 'SN号码':
+        if head_data[0] != '产品型号' or head_data[1] != '设备SN编码':
             return {"status": 0}, ''
     except IndexError:
         return {"status": 0}, ''
