@@ -130,41 +130,32 @@ def main_():  # 同步版
         access_token = get_token(DICT_TOKEN_PARAM["fufu"]["token_url"], DICT_TOKEN_PARAM["fufu"]["token_data"])
         if access_token:
             to_sync_apps_ff = CSInfo.objects.filter(is_sync_ff=0, deal_tag_ff=0)  # 待同步服服CRM的固件升级信息（客户已下载）
-            if to_sync_apps_ff:
-                post_url_ff = "http://120.76.167.138:7080/std/spi/update_sn?access_token={0}".format(access_token)
-                apps_sn_list = []
-                data_dict = []
-                post_data_ff = dict()
-                for app in to_sync_apps_ff:
-                    apps_sn_list.append(app.device_number)
-                    data_dict.append({"sn": app.device_number, "type": "W_" + app.device_type.device_name})
-                post_data_ff["sn_list"] = data_dict
+            post_url = "http://120.76.167.138:7080/std/spi/update_sn?access_token={0}"
+            post_url_ff = post_url.format(access_token)
+            for app in to_sync_apps_ff:
+                post_data_ff = {"sn": app.device_number, "type": "W_" + app.device_type.device_name}
                 result = get_request_data(post_url_ff, post_data_ff)
                 if result.setdefault("error", "") == "invalid_token":
                     access_token = get_token(DICT_TOKEN_PARAM["fufu"]["token_url"],
                                              DICT_TOKEN_PARAM["fufu"]["token_data"])
-                    post_url_ff = "http://120.76.167.138:7080/std/spi/update_sn?access_token={0}".format(access_token)
+                    post_url_ff = post_url.format(access_token)
                     result = get_request_data(post_url_ff, post_data_ff)
                 param = {"status_code": result["encrypted"], "status_msg": result["data"], "platform": 1}
                 if result["data"]:
-                    fail_sn_list = []
-                    data_list = result["data"]
-                    for sn_dict in data_list:
-                        if "不允许修改" not in sn_dict["err_message"]:  # 不允许修改表示服服后台已经有信息
-                            fail_sn_list.append(sn_dict["sn"])
-                    success_sn_list = list(set(apps_sn_list) - set(fail_sn_list))
                     InterfaceLogs.objects.create(**param)
-                    CSInfo.objects.filter(device_number__in=success_sn_list).update(is_sync_ff=1, deal_tag_ff=1)  #
-                    CSInfo.objects.filter(device_number__in=fail_sn_list).update(deal_tag_ff=1)
+                    app.deal_tag_ff = 1
+                    app.save()
                 else:
                     InterfaceLogs.objects.create(**param)
-                    CSInfo.objects.filter(device_number__in=apps_sn_list).update(is_sync_ff=1, deal_tag_ff=1)
+                    app.is_sync_ff = 1
+                    app.deal_tag_ff = 1
+                    app.save()
 
     sync_qywx()
-    # sync_fufu()
+    sync_fufu()
 
 
-# main_()
+main_()
 register_events(scheduler)
 scheduler.start()
 print("Scheduler started!")
