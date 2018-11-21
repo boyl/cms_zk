@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 
-from .models import BSInfo, Device
+from .models import BSInfo, Device, InterfaceLogs
 
 
 @admin.register(BSInfo)
@@ -25,11 +25,25 @@ class DeviceAdmin(admin.ModelAdmin):
     search_fields = ('device_name',)
 
 
+@admin.register(InterfaceLogs)
+class InterfaceLogsAdmin(admin.ModelAdmin):
+    list_display = (
+        'status_code', 'status_msg', 'model_id', 'device_sn', 'secret_no', 'device_id', 'qr_code',
+        'platform', 'create_time', 'deal_time')
+    list_filter = ('status_msg', 'create_time', 'deal_time')
+    list_per_page = 50
+    search_fields = ('device_sn', 'platform', 'status_code')
+    readonly_fields = list_display
+
+
 class MyAdminSite(AdminSite):
-    site_header = '中控智慧包管理后台'
+    site_header = '固件升级包后台管理'
     site_title = site_header
 
 
 admin_site = MyAdminSite('my_admin')
 admin_site.register(BSInfo, BSInfoAdmin)
 admin_site.register(Device, DeviceAdmin)
+admin_site.register(InterfaceLogs, InterfaceLogsAdmin)
+admin.site.site_header = '固件升级包后台管理'
+admin.site.site_title = '固件升级包后台管理'
