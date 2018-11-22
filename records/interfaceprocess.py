@@ -104,7 +104,7 @@ def main_():  # 同步版
                     app.is_sync_wx = 1
                     app.deal_tag_wx = 1
                     app.save()
-                if result["errcode"] == 600021:  # 同步失败，企业微信后台已有此设备SN
+                elif result["errcode"] == 600021:  # 同步失败，企业微信后台已有此设备SN
                     InterfaceLogs.objects.create(**param)
                     app.is_sync_wx = 1  # 标记已同步
                     app.deal_tag_wx = 1  # 标记已处理
