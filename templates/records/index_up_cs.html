@@ -62,7 +62,7 @@
                             }
                             if (data.msg == '1') {
                                 $("#1").show();
-                                window.location = '{% url 'download_file' %}' + '?file_path=' + data.file_path
+                                window.location.href = '{% url 'download_file' %}' + '?file_path=' + data.file_path
                             }
                         }
                     }
