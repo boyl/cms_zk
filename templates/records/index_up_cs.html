@@ -22,7 +22,7 @@
 				<input class="sninput1" id="input_name" placeholder="请输入您的姓名" onFocus="if(value==defaultValue){value='';this.style.color='#134d89'}" onBlur="if(!value){value=defaultValue; this.style.color='#134d89'}" style="color:#134d89"/></div>
 				</div>
             <div class="ts" id="0" style="display: none;">产品型号或SN码不能为空！</div>
-            <div class="ts" id="1" style="display: none;">bs包下载中...请注意下载进度！</div>
+            <div class="ts" id="1" style="display: none;">固件包下载中...请注意下载进度！</div>
           </div>
 		   <div class="biaoti"> <h1>固件升级包</h1></div>
 		  <div style="width:1200px;">
@@ -62,7 +62,7 @@
                             }
                             if (data.msg == '1') {
                                 $("#1").show();
-                                window.location.href = '{% url 'download_file' %}' + '?file_path=' + data.file_path
+                                window.location = '{% url 'download_file' %}' + '?file_path=' + data.file_path
                             }
                         }
                     }
