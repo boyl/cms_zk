@@ -21,6 +21,9 @@ class CSInfo(models.Model):
 
     device_type = models.ForeignKey('Device', verbose_name='设备型号')
 
+    def __str__(self):
+        return self.device_number
+
     class Meta:
         unique_together = ("device_number", "device_type")
         verbose_name = '固件记录'
@@ -54,7 +57,7 @@ class BSInfo(models.Model):
     colored_status.short_description = u"申请状态"
 
     def __str__(self):
-        return self.applicant
+        return self.device_number
 
     class Meta:
         ordering = ["-applicant"]
@@ -92,6 +95,9 @@ class InterfaceLogs(models.Model):
     qr_code = models.CharField(max_length=200, null=True, blank=True)
     platform = models.IntegerField('接口平台', choices=((0, '企业微信'), (1, '服服')))
     deal_time = models.DateTimeField('处理时间', auto_now_add=True)
+
+    def __str__(self):
+        return "接口日志"
 
     class Meta:
         verbose_name = "接口日志"
