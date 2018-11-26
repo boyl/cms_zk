@@ -1,6 +1,18 @@
-body {
+html {
+	height: 100%;
+	width: 100%;
 	background-image: url(../img/bg.jpg);
-	background-size:100%; 
+	background-size:cover;
+	top: 0;
+	left: 0;
+	background-attachment: fixed;
+	background-repeat: 100%;
+}
+body {
+	height: 100%;
+	width: 100%;
+top: 0;
+left: 0;
 	font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",sans-serif
 }
 div,form,img,ul,ol,li,dl,dt,dd,p,tr,td,body,strong,span,pre,input{margin:0; padding:0; border:0; background-repeat:no-repeat;}
