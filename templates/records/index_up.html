@@ -6,24 +6,22 @@
 				 <div class="biaoti1"> <h1>固件升级包</h1></div>
 				<h1><strong>固件升级包步骤</strong>：<br>
 
-1、点击固件升级；<br>
-2、输入SN码，SN码匹配成功后直接下载升级包；<br><br>
-<br>
+1、请输入正确的SN码，如有误，会造成设备不能正常使用甚至不能启动；<br>
+2、SN编码与机型查看方式：设备菜单--系统信息--设备信息--序列号/设备名称；<br><br>
 
 <h3><a href="{% url 'index_up_cs' %}">单设备升级包下载</a> ｜ <a href="{% url 'index_up_cs_d' %}">多设备升级包下载</a></h3>
 </h1>
 				</div>
 
 				<div class="index_up_bs_bg">
-				<div class="biaoti1"> <h1>bs升级包</h1></div>
-				<h1><strong>软件升级包步骤</strong>：<br>
+				<div class="biaoti1"> <h1>BS升级包下载</h1></div>
+				<h1><strong>BS升级包步骤</strong>：<br>
 
-1、软件升级包，需先申请并通过审核后，方可下载；<br>
-2、升级申请提交后24小时重新登陆网站，输入SN码下载安装包；<br>
+1、BS升级包，客户需提前24小时申请后，再次登陆此网站输入SN码，方可下载升级包<br><br><br>
 <br>
 <h3><a href="{% url 'index_up_bs' %}">单设备升级包申请</a> ｜ <a href="{% url 'index_up_bs_d' %}">多设备升级包申请</a></h3>
 </h1>
-				<h2><input class="input_up_cs" type="button" value="bs包下载" onClick="javascript:location='{% url 'index_up_bs1' %}'"/></h2>
+				<h2><input class="input_up_cs" type="button" value="BS升级包下载" onClick="javascript:location='{% url 'index_up_bs1' %}'"/></h2>
 				</div>
           </div>
 {% endblock %}
