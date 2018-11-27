@@ -11,6 +11,7 @@ cryptography==2.3.1
 Django==1.11.3
 django-apscheduler==0.2.13
 django-excel==0.0.10
+gunicorn==19.9.0
 idna==2.7
 idna-ssl==1.1.0
 lml==0.0.6
