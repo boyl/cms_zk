@@ -2,6 +2,8 @@ from django.db import models
 from django.conf import settings
 from django.utils.html import format_html
 
+from user.models import UserProfile
+
 # Create your models here.
 
 
@@ -20,6 +22,7 @@ class CSInfo(models.Model):
     deal_tag_ff = models.IntegerField('服服处理标志', choices=((0, '未处理'), (1, '已处理')), default=0)
 
     device_type = models.ForeignKey('Device', verbose_name='设备型号')
+    user = models.ForeignKey(UserProfile, null=True, blank=True)
 
     def __str__(self):
         return self.device_number
@@ -42,6 +45,7 @@ class BSInfo(models.Model):
     is_download = models.IntegerField('下载状态', choices=((0, '未下载'), (1, '已下载')), default=0)
 
     device_type = models.ForeignKey('Device', verbose_name='设备型号')
+    user = models.ForeignKey(UserProfile, null=True, blank=True)
 
     def colored_status(self):
         color = 'blue'
