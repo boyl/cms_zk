@@ -3,9 +3,12 @@ import hashlib
 import random
 import string
 import time
+from functools import wraps
 
 import requests
 from django.conf import settings
+from django.http.response import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 
 from user.models import UserProfile, OAuth
 
@@ -88,7 +91,7 @@ class CookieTool(object):
         return ''.join([str(i) for i in raw_list])
 
     def check_cookie(self, cookie):  # 验证cookie是否有效
-        if cookie:
+        try:
             user_id, expires_in, cookie_md5 = cookie.split(":")
             if time.time() > int(expires_in):
                 return False
@@ -98,5 +101,31 @@ class CookieTool(object):
                 return False
             else:
                 the_str = self.list_2char([oauth.id, oauth.access_token, oauth.expires_in, oauth.random_str])
-                return cookie_md5 == self.md5(the_str)
-        return False
+                if cookie_md5 == self.md5(the_str):
+                    setattr(self, "cached_user", oauth)
+                    return True
+                else:
+                    return False
+        except Exception:
+            return False
+
+    def set_user_by_cookie(self, request):
+        cookie = request.COOKIES.get('cookie_id', None)
+        if self.check_cookie(cookie):
+            request.oauth_user = getattr(self, "cached_user", None)
+        else:
+            request.oauth_user = None
+
+
+def oauth_required(func):
+    """if user is not None, it will go to farther processing,
+    else redirect to wechat oauth page"""
+
+    @wraps(func)
+    def wrapper(request):
+        if request.oauth_user is None:  # 重定向到微信认证页面
+            return HttpResponseRedirect(reverse('authenticate'))
+        else:
+            return func(request)
+
+    return wrapper
