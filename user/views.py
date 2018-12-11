@@ -2,7 +2,7 @@ from django.views.generic.base import View
 from requests.exceptions import RequestException
 from django.shortcuts import render
 
-from utils import OAuthRequestTool
+from utils import OAuthRequestTool, oauth_required
 from ENVS import APP_ID, APP_SECRET, TOKEN_URL_FMT, USER_INFO_URL
 
 # Create your views here.
@@ -18,6 +18,7 @@ def authenticate(request):
 class AuthenticateView(View):
     template_name = "records/index.html"
 
+    @oauth_required
     def get(self, request):
         code = request.GET.get("code", None)
         if code:
