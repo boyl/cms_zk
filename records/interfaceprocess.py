@@ -118,7 +118,7 @@ def main_():  # 同步版
         access_token = get_token(DICT_TOKEN_PARAM["fufu"]["token_url"], DICT_TOKEN_PARAM["fufu"]["token_data"])
         if access_token:
             to_sync_apps_ff = CSInfo.objects.filter(is_sync_ff=0, deal_tag_ff=0)  # 待同步服服CRM的固件升级信息（客户已下载）
-            post_url = "http://120.76.167.138:7080/std/spi/update_sn?access_token={0}"
+            post_url = DICT_TOKEN_PARAM["ff_update"]
             post_url_ff = post_url.format(access_token)
             for app in to_sync_apps_ff:
                 post_data_ff = {"sn": app.device_number, "type": "W_" + app.device_type.device_name}
