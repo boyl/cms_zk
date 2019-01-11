@@ -128,7 +128,14 @@ def main_():  # 同步版
                                              DICT_TOKEN_PARAM["fufu"]["token_data"])
                     post_url_ff = post_url.format(access_token)
                     result = get_request_data(post_url_ff, post_data_ff)
-                param = {"status_code": result["encrypted"], "status_msg": result["data"], "platform": 1}
+                try:
+                    param = {"status_code": result["encrypted"], "status_msg": result["data"], "platform": 1}
+                except:
+                    param = {"status_code": 999, "status_msg": str(result), "platform": 1}
+                    InterfaceLogs.objects.create(**param)
+                    app.deal_tag_ff = 1
+                    app.save()
+                    continue
                 if result["data"]:
                     InterfaceLogs.objects.create(**param)
                     app.deal_tag_ff = 1
