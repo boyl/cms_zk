@@ -8,7 +8,7 @@ from .models import BSInfo, Device, InterfaceLogs, CSInfo
 class BSInfoAdmin(admin.ModelAdmin):
     list_display = ('applicant', 'contact', 'device_number',
                     'application_date', 'colored_status', 'device_type')
-    list_filter = ('state', 'application_date')
+    list_filter = ('state', 'device_type__device_name')
     list_display_links = ('device_number', 'colored_status',)
     list_per_page = 50
     search_fields = ('applicant', 'device_number')
@@ -21,15 +21,15 @@ class CSInfoAdmin(admin.ModelAdmin):
     list_display = ('applicant', 'contact', 'device_number',
                     'is_sync_wx', 'is_sync_ff', 'device_type', 'deal_tag_wx', 'deal_tag_ff')
     list_display_links = ('device_number',)
-    list_filter = ('device_type', 'device_number')
+    list_filter = ('device_type__device_name',)
     list_per_page = 50
-    search_fields = ('device_type', 'device_number')
+    search_fields = ('device_type__device_name', 'device_number')
 
 
 @admin.register(Device)
 class DeviceAdmin(admin.ModelAdmin):
     list_display = ('id', 'device_name', 'del_tag')
-    list_filter = ('device_name', 'del_tag')
+    list_filter = ('device_name', 'model_id', 'del_tag')
     list_display_links = ('id', 'device_name')
     list_per_page = 50
     search_fields = ('device_name',)
