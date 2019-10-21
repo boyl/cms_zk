@@ -7,7 +7,7 @@ name = "pypi"
 python_version = "3.5"
 
 [packages]
-django = "==1.11.3"
+django = "==1.11.23"
 pip = "==18.0"
 aiohttp = "==3.4.4"
 apscheduler = "==3.5.3"
